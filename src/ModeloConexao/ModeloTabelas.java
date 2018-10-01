@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package ModeloConexao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import javax.swing.table.AbstractTableModel;
  * @author danny
  * Modelo de Tabela de clientes
  */
-public class modeloTabelas extends AbstractTableModel {
+public class ModeloTabelas extends AbstractTableModel {
     private List<Object> dados = new ArrayList<>();
     private String[]colunas = {"Numero_Conta","tipo"};
 

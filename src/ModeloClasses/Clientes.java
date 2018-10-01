@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package ModeloClasses;
 
 /**
  *
  * @author danny
  */
-public class clientes {
+public class Clientes {
     int codigo;
     String nome;
-    boolean sexo;
+    String sexo;
     int nrBi;
     int contacto;
     String bairro;
     int quarteirao;
     int casa;
 
-    public clientes(int codigo,String nome, boolean sexo, int nrBi, int contacto, String bairro, int quarteirao, int casa) {
+    public Clientes(int codigo,String nome, String sexo, int nrBi, int contacto, String bairro, int quarteirao, int casa) {
         this.codigo = codigo;
         this.nome = nome;
         this.sexo = sexo;
@@ -47,11 +47,11 @@ public class clientes {
         this.nome = nome;
     }
 
-    public boolean isSexo() {
+    public String setSexo() {
         return sexo;
     }
 
-    public void setSexo(boolean sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 

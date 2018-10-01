@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package ModeloClasses;
 
 import java.util.Date;
 
@@ -11,7 +11,8 @@ import java.util.Date;
  *
  * @author danny
  */
-public class usuario {
+public class Usuario {
+    int codigo;
     String nomeCompleto;
     String nomeUsuario;
     String senha;
@@ -20,7 +21,8 @@ public class usuario {
     String Operacao;
     Date horaSaida;
 
-    public usuario(String nomeCompleto, String nomeUsuario, String senha, String tipo, Date horaEntrada, String Operacao, Date horaSaida) {
+    public Usuario(int codigo,String nomeCompleto, String nomeUsuario, String senha, String tipo, Date horaEntrada, String Operacao, Date horaSaida) {
+        this.codigo = codigo;
         this.nomeCompleto = nomeCompleto;
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
@@ -29,6 +31,15 @@ public class usuario {
         this.Operacao = Operacao;
         this.horaSaida = horaSaida;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
 
     public String getNomeCompleto() {
         return nomeCompleto;

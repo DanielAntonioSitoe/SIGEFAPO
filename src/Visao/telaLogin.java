@@ -5,6 +5,8 @@
  */
 package Visao;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danny
@@ -39,6 +41,7 @@ public class telaLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGEFAPO");
         setBackground(new java.awt.Color(51, 51, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelIconCadeado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/padlock_21084.png"))); // NOI18N
@@ -87,11 +90,18 @@ public class telaLogin extends javax.swing.JFrame {
 
     private void BtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEntrarActionPerformed
         // TODO add your handling code here:
-        telaPrincipal t = new telaPrincipal();
+        if(txtUsuario.getText()!=null && txtPassword.getText()!=null){
+          
+        telaPrincipal t = new telaPrincipal(txtUsuario.getText(),"Administrador");
         t.setLocationRelativeTo(null);
         t.setVisible(true);
-        t.setSize(1350,700);
+        t.setSize(1350,700);       
         dispose();
+        
+    }else{
+            JOptionPane.showMessageDialog(null," Prencha os dados!");
+        }
+        
     }//GEN-LAST:event_BtnEntrarActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
@@ -101,9 +111,8 @@ public class telaLogin extends javax.swing.JFrame {
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
     
        
-        // TODO add your handling code here:
-         System.exit(0);
-        
+       
+         System.exit(0);        
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     /**

@@ -5,17 +5,23 @@
  */
 package Visao;
 
+import ModeloClasses.Clientes;
+import ModeloPercistencia.PercistenciaClientes;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danny
  */
 public class telaClientes extends javax.swing.JFrame {
-
+    
+java.awt.event.ActionEvent evt;
     /**
      * Creates new form telaClientes
      */
     public telaClientes() {
         initComponents();
+        jBtCancelarActionPerformed(evt);
     }
 
     /**
@@ -27,6 +33,7 @@ public class telaClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -60,7 +67,6 @@ public class telaClientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Clientes");
         setMinimumSize(new java.awt.Dimension(850, 600));
-        setPreferredSize(new java.awt.Dimension(850, 590));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,16 +93,31 @@ public class telaClientes extends javax.swing.JFrame {
         jBtInserir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/businessapplication_edit_male_user_thepencil_theclient_negocio_2321.png"))); // NOI18N
         jBtInserir.setText("Inserir");
+        jBtInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtInserirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBtInserir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 160, 60));
 
         jBtExcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jBtExcluir.setText("Excluir");
+        jBtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBtExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 160, 60));
 
         jBtCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtCancelar.setText("Cancelar");
+        jBtCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 160, 60));
 
         jTxtCasaCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +209,9 @@ public class telaClientes extends javax.swing.JFrame {
         });
         getContentPane().add(jTxtContactoCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 220, 30));
 
+        buttonGroup1.add(jRBMasculino);
         jRBMasculino.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jRBMasculino.setSelected(true);
         jRBMasculino.setText("Masculino");
         jRBMasculino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,6 +220,7 @@ public class telaClientes extends javax.swing.JFrame {
         });
         getContentPane().add(jRBMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
+        buttonGroup1.add(jRBFemenino);
         jRBFemenino.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jRBFemenino.setText("Feminino");
         getContentPane().add(jRBFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
@@ -205,16 +229,8 @@ public class telaClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSalvarActionPerformed
-        // TODO add your handling code here:
-//        if(){
-//            
-//        }
-        String nrBi = jTxtNrBiCliente.getText();
-        String nome = jTxtNomeCliente.getText();
-        String contacto = jTxtContactoCliente1.getText();
-        int nrCasa = Integer.parseInt(jTxtCasaCliente.getText());
-        int nrQuateirao = Integer.parseInt(jTxtQuarteiraoCliente.getText());
-        String bairro = jTxtBairroCliente.getText();
+        // TODO add your handling code here:       
+        PercistenciaClientes.gravarDadosClientes(recuperaDados());  
         
     }//GEN-LAST:event_jBtSalvarActionPerformed
 
@@ -242,6 +258,64 @@ public class telaClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBMasculinoActionPerformed
 
+    private void jBtInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtInserirActionPerformed
+        // TODO add your handling code here:
+        PercistenciaClientes.editarDadosClientes(recuperaDados());
+        jBtCancelarActionPerformed(evt);
+    }//GEN-LAST:event_jBtInserirActionPerformed
+
+    private void jBtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCancelarActionPerformed
+        // TODO add your handling code here:
+        jTxtBairroCliente.setText("");
+                jTxtCasaCliente.setText("");
+                jTxtContactoCliente1.setText("");
+                jTxtNomeCliente.setText("");
+                jTxtNrBiCliente.setText("");
+                jTxtQuarteiraoCliente.setText("");
+                jRBMasculino.setSelected(true);
+                
+                jBtExcluir.setEnabled(false);
+                jBtInserir.setEnabled(false);
+                jBtSalvar.setEnabled(true);
+                
+                
+    }//GEN-LAST:event_jBtCancelarActionPerformed
+
+    private void jBtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtExcluirActionPerformed
+        // TODO add your handling code here:
+        PercistenciaClientes.apagarDadosClientes(recuperaDados());
+       
+    }//GEN-LAST:event_jBtExcluirActionPerformed
+
+         Clientes recuperaDados(){
+             int cod=0;
+          try{   String sexo = null;
+        if(jRBMasculino.isSelected()){
+           sexo="Masculino" ;
+        }
+        if(jRBFemenino.isSelected()){
+           sexo="Femenino" ;
+        }
+        if(jBtInserir.isEnabled()){
+         cod = (int) jTable1.getValueAt(jTable1.getSelectedRow(),0);
+        }
+        int nrBi = Integer.parseInt(jTxtNrBiCliente.getText());
+        String nome = jTxtNomeCliente.getText();
+        int contacto = Integer.parseInt(jTxtContactoCliente1.getText());
+        int nrCasa = Integer.parseInt(jTxtCasaCliente.getText());
+        int nrQuateirao = Integer.parseInt(jTxtQuarteiraoCliente.getText());
+        String bairro = jTxtBairroCliente.getText();
+        
+        Clientes cliente1 = new Clientes(cod, nome, sexo, nrBi, contacto, bairro, nrQuateirao, nrCasa);
+         jBtCancelarActionPerformed(evt);   
+         return   cliente1;
+         
+        }catch(Exception e){
+              JOptionPane.showMessageDialog(null,"Falha Verifique os Dados!");
+         return null;
+        }
+        
+         }
     /**
      * @param args the command line arguments
      */
@@ -279,6 +353,7 @@ public class telaClientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jBtCancelar;
     private javax.swing.JButton jBtExcluir;
     private javax.swing.JButton jBtInserir;

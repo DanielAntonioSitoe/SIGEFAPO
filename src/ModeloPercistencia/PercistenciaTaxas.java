@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package ModeloPercistencia;
 
-import Visao.telaClientes;
 
 /**
  *
  * @author danny
  */
-public class percistencia {
-    
-    
-    
-    void pegarDadosClientes(){
-//        String nrBi = telaClientes.jTxtNrBiCliente.getText();
+public class PercistenciaTaxas {
+
+   public static void editarDadosTaxas(double taxaConsumo, double taxaRenovacao){
+
     }
+   
     
 }

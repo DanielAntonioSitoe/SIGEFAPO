@@ -61,6 +61,7 @@ public class telaSplach extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIGEFAPO");
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 350, 30));
 

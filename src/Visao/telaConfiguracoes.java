@@ -5,6 +5,8 @@
  */
 package Visao;
 
+import ModeloPercistencia.PercistenciaTaxas;
+
 /**
  *
  * @author danny
@@ -33,14 +35,14 @@ public class telaConfiguracoes extends javax.swing.JFrame {
         jBtSalvar = new javax.swing.JButton();
         jBtCancelar = new javax.swing.JButton();
         jLblCodCliente = new javax.swing.JLabel();
-        jTxtTaxaNormal = new javax.swing.JTextField();
+        jTxtTaxaRenovacao = new javax.swing.JTextField();
+        jLblCodCliente1 = new javax.swing.JLabel();
+        jTxtTaxaNormal1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pagamentos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(500, 260));
-        setMinimumSize(new java.awt.Dimension(500, 260));
-        setPreferredSize(new java.awt.Dimension(500, 260));
+        setMinimumSize(new java.awt.Dimension(500, 360));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -65,77 +67,56 @@ public class telaConfiguracoes extends javax.swing.JFrame {
         jBtCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtCancelar.setText("Cancelar");
+        jBtCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 160, 40));
 
         jLblCodCliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLblCodCliente.setText("Taxa:");
-        getContentPane().add(jLblCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 180, 20));
-        getContentPane().add(jTxtTaxaNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 240, 30));
+        jLblCodCliente.setText("Taxa de renovacao:");
+        getContentPane().add(jLblCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, 180, 20));
+
+        jTxtTaxaRenovacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtTaxaRenovacaoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTxtTaxaRenovacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 240, 30));
+
+        jLblCodCliente1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLblCodCliente1.setText("Taxa de consumo em m3:");
+        getContentPane().add(jLblCodCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 220, 20));
+        getContentPane().add(jTxtTaxaNormal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 240, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSalvarActionPerformed
         // TODO add your handling code here:
+        double taxaConsumo = Double.parseDouble(jTxtTaxaNormal1.getText());
+         double taxaRenovacao = Double.parseDouble(jTxtTaxaRenovacao.getText());
+         PercistenciaTaxas.editarDadosTaxas(taxaConsumo,taxaRenovacao);
     }//GEN-LAST:event_jBtSalvarActionPerformed
+
+    private void jTxtTaxaRenovacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTaxaRenovacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtTaxaRenovacaoActionPerformed
+
+    private void jBtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCancelarActionPerformed
+        // TODO add your handling code here:
+        jTxtTaxaNormal1.setText("");
+        jTxtTaxaRenovacao.setText("");
+        this.dispose();
+    }//GEN-LAST:event_jBtCancelarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(telaConfiguracoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(telaConfiguracoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(telaConfiguracoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(telaConfiguracoes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -152,6 +133,8 @@ public class telaConfiguracoes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLblCodCliente;
-    private javax.swing.JTextField jTxtTaxaNormal;
+    private javax.swing.JLabel jLblCodCliente1;
+    private javax.swing.JTextField jTxtTaxaNormal1;
+    private javax.swing.JTextField jTxtTaxaRenovacao;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,17 +5,25 @@
  */
 package Visao;
 
+import ModeloPercistencia.PercistenciaUsuario;
+import ModeloClasses.Usuario;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danny
  */
 public class telaUsuarios extends javax.swing.JFrame {
+    java.awt.event.ActionEvent evt;
 
     /**
      * Creates new form telaClientes
      */
     public telaUsuarios() {
         initComponents();
+        jBtCancelarActionPerformed(evt);
     }
 
     /**
@@ -39,8 +47,8 @@ public class telaUsuarios extends javax.swing.JFrame {
         jLbSenhaUsuario = new javax.swing.JLabel();
         jLbUserUsuario = new javax.swing.JLabel();
         jLbNomeUsuario = new javax.swing.JLabel();
+        jTxtNomeCompleto = new javax.swing.JTextField();
         jTxtNomeUsuario = new javax.swing.JTextField();
-        jTxtUserUsuario = new javax.swing.JTextField();
         jLbTipoUsuario = new javax.swing.JLabel();
         jTxtSenhaUsuario = new javax.swing.JTextField();
         jComboTipoUsuario = new javax.swing.JComboBox<>();
@@ -52,7 +60,6 @@ public class telaUsuarios extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadasro de Usuarios");
-        setPreferredSize(new java.awt.Dimension(850, 580));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -79,16 +86,31 @@ public class telaUsuarios extends javax.swing.JFrame {
         jBtInserir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/businessapplication_edit_male_user_thepencil_theclient_negocio_2321.png"))); // NOI18N
         jBtInserir.setText("Inserir");
+        jBtInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtInserirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBtInserir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 160, 60));
 
         jBtExcluir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
         jBtExcluir.setText("Excluir");
+        jBtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBtExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 160, 60));
 
         jBtCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
         jBtCancelar.setText("Cancelar");
+        jBtCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jBtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 160, 60));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -117,8 +139,8 @@ public class telaUsuarios extends javax.swing.JFrame {
         jLbNomeUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLbNomeUsuario.setText("Nome :");
         getContentPane().add(jLbNomeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 110, 20));
-        getContentPane().add(jTxtNomeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 240, 30));
-        getContentPane().add(jTxtUserUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 240, 30));
+        getContentPane().add(jTxtNomeCompleto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 240, 30));
+        getContentPane().add(jTxtNomeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 240, 30));
 
         jLbTipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLbTipoUsuario.setText("Tipo:");
@@ -150,12 +172,61 @@ public class telaUsuarios extends javax.swing.JFrame {
 
     private void jBtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSalvarActionPerformed
         // TODO add your handling code here:
+      
+    PercistenciaUsuario.gravarDadosUsuario(recuperaDados());
     }//GEN-LAST:event_jBtSalvarActionPerformed
 
     private void jTxtImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtImagenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTxtImagenActionPerformed
 
+    private void jBtInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtInserirActionPerformed
+        // TODO add your handling code here:
+        PercistenciaUsuario.editarDadosUsuario(recuperaDados());
+    }//GEN-LAST:event_jBtInserirActionPerformed
+
+    private void jBtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCancelarActionPerformed
+        // TODO add your handling code here:
+        jTxtNomeCompleto.setText("");
+        jTxtNomeUsuario.setText("");
+        jTxtSenhaUsuario.setText("");
+        jComboTipoUsuario.setSelectedIndex(0);
+        
+        jBtInserir.setEnabled(false);
+        jBtExcluir.setEnabled(false);
+        jBtSalvar.setEnabled(true);
+    }//GEN-LAST:event_jBtCancelarActionPerformed
+
+    private void jBtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtExcluirActionPerformed
+        // TODO add your handling code here:
+        PercistenciaUsuario.apagarDadosUsuario(recuperaDados());
+    }//GEN-LAST:event_jBtExcluirActionPerformed
+
+    
+    Usuario recuperaDados(){
+        try{
+          int codigo = 0;
+          if(jBtInserir.isEnabled()){
+         codigo = (int) jTable1.getValueAt(jTable1.getSelectedRow(),0);
+        }
+        String nomeCompleto = jTxtNomeCompleto.getText();
+    String nomeUsuario = jTxtNomeUsuario.getText();
+    String senha = jTxtSenhaUsuario.getText();
+    String tipo = (String) jComboTipoUsuario.getSelectedItem();    
+//    Calendar dat = Calendar.getInstance();           
+    Date horaEntrada = null;
+    String Operacao = "";
+    Date horaSaida = null;
+    
+    Usuario u = new Usuario(codigo,nomeCompleto,nomeUsuario,senha,tipo,horaEntrada,Operacao,horaSaida);
+            jBtCancelarActionPerformed(evt);
+    return u;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Falha verifique os Dados!");
+            return null;
+        } 
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -212,8 +283,8 @@ public class telaUsuarios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTxtImagen;
+    private javax.swing.JTextField jTxtNomeCompleto;
     private javax.swing.JTextField jTxtNomeUsuario;
     private javax.swing.JTextField jTxtSenhaUsuario;
-    private javax.swing.JTextField jTxtUserUsuario;
     // End of variables declaration//GEN-END:variables
 }
