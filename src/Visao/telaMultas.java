@@ -11,12 +11,12 @@ import ModeloPercistencia.PercistenciaTaxas;
  *
  * @author danny
  */
-public class telaConfiguracoes extends javax.swing.JFrame {
+public class telaMultas extends javax.swing.JFrame {
 
     /**
      * Creates new form telaClientes
      */
-    public telaConfiguracoes() {
+    public telaMultas() {
         initComponents();
     }
 
@@ -30,14 +30,16 @@ public class telaConfiguracoes extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jBtSalvar = new javax.swing.JButton();
         jBtCancelar = new javax.swing.JButton();
-        jLblCodCliente = new javax.swing.JLabel();
-        jTxtTaxaRenovacao = new javax.swing.JTextField();
         jLblCodCliente1 = new javax.swing.JLabel();
         jTxtTaxaNormal1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTxtTaxaNormal2 = new javax.swing.JTextField();
+        jTxtTaxaNormal3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Taxas");
@@ -46,12 +48,11 @@ public class telaConfiguracoes extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Configurar taxas");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 180, 40));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 60, 80));
+        jLabel2.setText("Atualizar Multas ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 220, 40));
 
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 510, 70));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 520, 70));
 
         jBtSalvar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/entrar.png"))); // NOI18N
@@ -61,7 +62,7 @@ public class telaConfiguracoes extends javax.swing.JFrame {
                 jBtSalvarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBtSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 160, -1));
+        getContentPane().add(jBtSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 160, -1));
 
         jBtCancelar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jBtCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/cancelar.png"))); // NOI18N
@@ -71,23 +72,26 @@ public class telaConfiguracoes extends javax.swing.JFrame {
                 jBtCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 160, 40));
-
-        jLblCodCliente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLblCodCliente.setText("Taxa de renovacao:");
-        getContentPane().add(jLblCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 180, 20));
-
-        jTxtTaxaRenovacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtTaxaRenovacaoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTxtTaxaRenovacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 240, 30));
+        getContentPane().add(jBtCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 160, 40));
 
         jLblCodCliente1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLblCodCliente1.setText("Taxa de consumo em m3:");
-        getContentPane().add(jLblCodCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 220, 20));
-        getContentPane().add(jTxtTaxaNormal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 240, 30));
+        jLblCodCliente1.setText("Multas de consumo em m3:");
+        getContentPane().add(jLblCodCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 220, 20));
+        getContentPane().add(jTxtTaxaNormal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 180, 30));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Maxima:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 80, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Media:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 80, 30));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Minima:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 80, 20));
+        getContentPane().add(jTxtTaxaNormal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 180, 30));
+        getContentPane().add(jTxtTaxaNormal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 180, 30));
 
         pack();
         setLocationRelativeTo(null);
@@ -95,18 +99,12 @@ public class telaConfiguracoes extends javax.swing.JFrame {
 
     private void jBtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtSalvarActionPerformed
         // TODO add your handling code here:
-        double taxaConsumo = Double.parseDouble(jTxtTaxaNormal1.getText());
-        double taxaRenovacao = Double.parseDouble(jTxtTaxaRenovacao.getText());
-        PercistenciaTaxas.editarDadosTaxas(taxaConsumo, taxaRenovacao);
+   
     }//GEN-LAST:event_jBtSalvarActionPerformed
-
-    private void jTxtTaxaRenovacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtTaxaRenovacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTxtTaxaRenovacaoActionPerformed
 
     private void jBtCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtCancelarActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_jBtCancelarActionPerformed
 
     /**
@@ -114,12 +112,12 @@ public class telaConfiguracoes extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+    
 
-
- /* Create and display the form */
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new telaConfiguracoes().setVisible(true);
+               new telaMultas().setVisible(true);
             }
         });
     }
@@ -129,10 +127,12 @@ public class telaConfiguracoes extends javax.swing.JFrame {
     private javax.swing.JButton jBtSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLblCodCliente;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLblCodCliente1;
     private javax.swing.JTextField jTxtTaxaNormal1;
-    private javax.swing.JTextField jTxtTaxaRenovacao;
+    private javax.swing.JTextField jTxtTaxaNormal2;
+    private javax.swing.JTextField jTxtTaxaNormal3;
     // End of variables declaration//GEN-END:variables
 }

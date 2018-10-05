@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ModeloConexao;
+package ModeloTabelas;
 
+import ModeloClasses.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -14,9 +15,9 @@ import javax.swing.table.AbstractTableModel;
  * @author danny
  * Modelo de Tabela de clientes
  */
-public class ModeloTabelas extends AbstractTableModel {
-    private List<Object> dados = new ArrayList<>();
-    private String[]colunas = {"Numero_Conta","tipo"};
+public class ModeloTabelaUsuario extends AbstractTableModel {
+    private List<Usuario> dados = new ArrayList<>();
+    private String[]colunas = {"Codigo","NomeCompleto","NomeUsuario","Senha","Tipo","HoraEntrada","Operacao","HoraSaida"};
 
     @Override
     public String getColumnName(int column) {
@@ -36,14 +37,18 @@ public class ModeloTabelas extends AbstractTableModel {
     @Override
     public Object getValueAt(int linha, int coluna) {
        switch(coluna){
-//           case 0 : return dados.get(linha).getNumeroConta();
-//           case 1 : return dados.get(linha).getCliente();
-//           case 2 : return dados.get(linha).getSaldo();
-//           case 3 : return dados.get(linha).getTipo();
+           case 0 : return dados.get(linha).getCodigo();
+           case 1 : return dados.get(linha).getNomeCompleto();
+           case 2 : return dados.get(linha).getNomeUsuario();
+           case 3 : return dados.get(linha).getSenha();
+           case 4 : return dados.get(linha).getTipo();
+           case 5 : return dados.get(linha).getHoraEntrada();
+           case 6 : return dados.get(linha).getOperacao();
+           case 7 : return dados.get(linha).getHoraSaida();
        }return null;
     }
     
-    public void addrow(Object p){
+    public void addrow(Usuario p){
         this.dados.add(p);
         this.fireTableDataChanged();
     }

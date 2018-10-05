@@ -7,8 +7,17 @@ package Visao;
 
 import ModeloPercistencia.PercistenciaUsuario;
 import ModeloClasses.Usuario;
+import ModeloConexao.conexao;
+import ModeloTabelas.ModeloTabelaUsuario;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.sql.Connection;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +26,13 @@ import javax.swing.JOptionPane;
  */
 public class telaUsuarios extends javax.swing.JFrame {
     java.awt.event.ActionEvent evt;
+    
+      private static conexao mysql=new conexao();
+    private static Connection cn=mysql.conectar();
+    private static String sSql="";
+    public Integer totalregistros;
+    Usuario u;
+   
 
     /**
      * Creates new form telaClientes
@@ -24,7 +40,39 @@ public class telaUsuarios extends javax.swing.JFrame {
     public telaUsuarios() {
         initComponents();
         jBtCancelarActionPerformed(evt);
+        atualiza2();
     }
+    
+     public void atualiza2() {       
+         ModeloTabelaUsuario tableModel = new ModeloTabelaUsuario();          
+         jTable1.setModel(tableModel);    
+         
+         sSql="select cod,nomeCompleto,nomeUsuario,senha,tipo,horaEntrada,Operacao,horaSaida from tabelaUsuarios";
+        try{ 
+         Statement st = cn.createStatement();
+         ResultSet rs = st.executeQuery(sSql);
+         while(rs.next()){
+             u.setCodigo(rs.getInt("cod"));
+             u.setNomeCompleto(rs.getString("nomeCompleto"));
+             u.setNomeUsuario(rs.getString("nomeUsuario"));
+             u.setSenha(rs.getString("senha"));
+             u.setTipo(rs.getString("tipo"));
+             u.setHoraEntrada(rs.getString("horaEntrada"));
+             u.setOperacao(rs.getString("Operacao"));
+             u.setHoraSaida(rs.getString("horaSaida"));             
+             totalregistros +=1;      
+             tableModel.addrow(u);
+             
+         }        
+        }
+        catch(Exception erro){           
+       JOptionPane.showMessageDialog(null," Erro de Leitura: "+erro/*.getMessage()*/);   
+        }
+    
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,6 +222,9 @@ public class telaUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
       
     PercistenciaUsuario.gravarDadosUsuario(recuperaDados());
+//     ModeloTabelaUsuario tableModel = new ModeloTabelaUsuario();          
+//         jTable1.setModel(tableModel);    
+//         tableModel.addrow(recuperaDados());
     }//GEN-LAST:event_jBtSalvarActionPerformed
 
     private void jTxtImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtImagenActionPerformed
@@ -206,17 +257,18 @@ public class telaUsuarios extends javax.swing.JFrame {
     Usuario recuperaDados(){
         try{
           int codigo = 0;
-          if(jBtInserir.isEnabled()){
-         codigo = (int) jTable1.getValueAt(jTable1.getSelectedRow(),0);
-        }
+//          if(jBtInserir.isEnabled()){
+//         codigo = (int) jTable1.getValueAt(jTable1.getSelectedRow(),0);
+//        }
         String nomeCompleto = jTxtNomeCompleto.getText();
     String nomeUsuario = jTxtNomeUsuario.getText();
     String senha = jTxtSenhaUsuario.getText();
     String tipo = (String) jComboTipoUsuario.getSelectedItem();    
-//    Calendar dat = Calendar.getInstance();           
-    Date horaEntrada = null;
-    String Operacao = "";
-    Date horaSaida = null;
+   Calendar dat = Calendar.getInstance(); 
+    DateFormat f =DateFormat.getDateInstance();
+    String horaEntrada = f.format(dat.getTime());
+    String Operacao = "sdfs";
+    String horaSaida = "32" ;
     
     Usuario u = new Usuario(codigo,nomeCompleto,nomeUsuario,senha,tipo,horaEntrada,Operacao,horaSaida);
             jBtCancelarActionPerformed(evt);

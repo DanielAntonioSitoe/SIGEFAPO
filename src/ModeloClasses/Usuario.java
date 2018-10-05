@@ -17,11 +17,11 @@ public class Usuario {
     String nomeUsuario;
     String senha;
     String tipo;
-    Date horaEntrada;
+    String horaEntrada;
     String Operacao;
-    Date horaSaida;
+    String horaSaida;
 
-    public Usuario(int codigo,String nomeCompleto, String nomeUsuario, String senha, String tipo, Date horaEntrada, String Operacao, Date horaSaida) {
+    public Usuario(int codigo,String nomeCompleto, String nomeUsuario, String senha, String tipo, String horaEntrada, String Operacao, String horaSaida) {
         this.codigo = codigo;
         this.nomeCompleto = nomeCompleto;
         this.nomeUsuario = nomeUsuario;
@@ -73,12 +73,12 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public Date getHoraEntrada() {
+    public String getHoraEntrada() {
         return horaEntrada;
     }
 
-    public void setHoraEntrada(Date horaEntrada) {
-        this.horaEntrada = horaEntrada;
+    public void setHoraEntrada(String horaEntrada) {
+        this.horaEntrada = horaEntrada;       
     }
 
     public String getOperacao() {
@@ -89,11 +89,11 @@ public class Usuario {
         this.Operacao = Operacao;
     }
 
-    public Date getHoraSaida() {
+    public String getHoraSaida() {
         return horaSaida;
     }
 
-    public void setHoraSaida(Date horaSaida) {
+    public void setHoraSaida(String horaSaida) {
         this.horaSaida = horaSaida;
     }
     
